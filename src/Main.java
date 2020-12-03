@@ -1,8 +1,11 @@
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        lcs l = new lcs();
+        String a="abcde";
+        String b = "acbde";
+        System.out.println(l.greedy(a,b));
+        System.out.println(l.greedyPlus(b,a));
 
-        System.out.println(StringEqual.equalGreedy1("a","v"));
     }
 }
