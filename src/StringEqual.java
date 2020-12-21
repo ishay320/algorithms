@@ -1,5 +1,6 @@
 public class StringEqual {
 
+
     public static int equalGreedy1(String a, String b){
         int size = 0;
         int now = 0;

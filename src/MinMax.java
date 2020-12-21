@@ -1,5 +1,6 @@
-
-
+/**
+ * this is MIN and MAX algorithms class
+ */
 public class MinMax {
 
     /**
@@ -40,35 +41,35 @@ public class MinMax {
         int minMax[] = new int[2];
         int min , max;
         if (array[0]<array[1]){ //setup
-            min = array[0];
-            max = array[1];
+            min = 0;
+            max = 1;
         }else {
-            min = array[1];
-            max = array[0];
+            min = 1;
+            max = 0;
         }
         for (int i = 2; i < array.length-1; i+=2) {
             if (array[i]<array[i+1]){
-                if (max<array[i+1]){
-                    max = array[i+1];
+                if (array[max]<array[i+1]){
+                    max = i+1;
                 }
-                if (min>array[i]){
-                    min = array[i];
+                if (array[min]>array[i]){
+                    min = i;
                 }
             }else {
-                if (max<array[i]){
-                    max = array[i];
+                if (array[max]<array[i]){
+                    max = i;
                 }
-                if (min>array[i+1]){
-                    min = array[i+1];
+                if (array[min]>array[i+1]){
+                    min = i+1;
                 }
             }
         }
         if (array.length%2!=0){ //if the last one in array lost
-            if (max<array[array.length-1]){
-                max = array[array.length-1];
+            if (array[max]<array[array.length-1]){
+                max = array.length-1;
             }else
-            if (min>array[array.length-1]){
-                min = array[array.length-1];
+            if (array[min]>array[array.length-1]){
+                min = array.length-1;
             }
         }
         minMax[0]=min;
