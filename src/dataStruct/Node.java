@@ -1,10 +1,10 @@
 package dataStruct;
 
 public class Node<T>{
-    Node<T> next;
-    Node<T> prev;
-    T data;
-    int sign;
+    private Node<T> next;
+    private Node<T> prev;
+    private T data;
+    private int sign;
 
     public Node(Node<T> next, Node<T> prev, T data){
         this.next = next;

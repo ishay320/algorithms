@@ -2,10 +2,10 @@ package CycleDetection;
 
 import dataStruct.Node;
 
-public class cycleAlgo{
-    Node<Integer> root;
+public class cycleAlgo<T>{
+    private Node<T> root;
 
-    public cycleAlgo(Node<Integer> root){
+    public cycleAlgo(Node<T> root){
         this.root = root;
     }
 
@@ -13,7 +13,7 @@ public class cycleAlgo{
         boolean flag = true;
         int oldSign = 0;
         int newSign = 1;
-        Node<Integer> currentNode = root.getNext();
+        Node<T> currentNode = root.getNext();
         int count = 1;
         int steps = 0;
         root.setSign(oldSign);
@@ -39,9 +39,72 @@ public class cycleAlgo{
         }
         return count;
     }
-//       public Node<Integer> twoFingers(){
-//
-//       }
+    public boolean twoFingersHaveLoop(){
+        Node<T> turtle = root;
+        Node<T> hare = root;
+        while (true){
+            if (turtle.getNext() == null){
+                return false;
+            }
+            if (hare.getNext() == null || hare.getNext().getNext() == null){
+                return false;
+            }
+            turtle = turtle.getNext();
+            hare = hare.getNext().getNext();
+            if (turtle==hare){
+                return true;
+            }
+        }
+    }
+
+    public Node<T> twoFingersMeetingPoint(){
+        Node<T> turtle = root;
+        Node<T> hare = root;
+        while (true){
+            if (turtle.getNext() == null){
+                return null;
+            }
+            if (hare.getNext() == null || hare.getNext().getNext() == null){
+                return null;
+            }
+            turtle = turtle.getNext();
+            hare = hare.getNext().getNext();
+            if (turtle==hare){
+                return turtle;
+            }
+        }
+    }
+
+    public Node<T> twoFingersCircleBegin(Node<T> meetup){
+        Node<T> turtle = root;
+        Node<T> hare = meetup;
+        if (meetup == null){
+            return null;
+        }
+        while (turtle!=hare){
+            hare = hare.getNext();
+            if (turtle==hare.getNext()){
+                return turtle;
+            }
+            turtle = turtle.getNext();
+
+        }
+        return turtle;
+    }
+
+    public long twoFingerLoopLength(Node<T> meetup){
+        if (meetup == null){
+            return -1;
+        }
+        Node<T> turtle = meetup.getNext();
+        Node<T> hare = meetup;
+        long length = 1;
+        while (turtle!=hare){
+            turtle = turtle.getNext();
+            length++;
+        }
+    return length;
+    }
 
 
 }
