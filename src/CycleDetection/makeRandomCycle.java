@@ -29,7 +29,7 @@ public class makeRandomCycle{
             lastNode = node;
             lastLoop =lastNode;
 
-            }
+        }
         if (circleSize>0){
             lastNode.setNext(loop);
             loop.setPrev(lastNode);
@@ -47,6 +47,7 @@ public class makeRandomCycle{
             pointer.setData(random.nextInt(bound));
             pointer = pointer.getNext();
         }
+        if (pathSize==0)pointer.setData(random.nextInt(bound));
     }
     public void setRandomSign(int bound){
         Node<Integer> pointer =root;
@@ -58,6 +59,8 @@ public class makeRandomCycle{
             pointer.setSign(random.nextInt(bound));
             pointer = pointer.getNext();
         }
+        if (pathSize==0)pointer.setSign(random.nextInt(bound));
+
     }
 
     public Node<Integer> getRoot(){
