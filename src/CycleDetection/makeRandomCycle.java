@@ -5,10 +5,10 @@ import dataStruct.Node;
 import java.util.Random;
 
 public class makeRandomCycle{
-    private Random random;
-    private Node<Integer> root;
-    private int pathSize;
-    private int circleSize;
+    private final Random random;
+    private final Node<Integer> root;
+    private final int pathSize;
+    private final int circleSize;
 
     public makeRandomCycle(long seed, int pathSize, int circleSize){
         root = new Node<Integer>(null,null,null);
