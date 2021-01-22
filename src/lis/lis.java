@@ -39,7 +39,7 @@ public class lis{
 
     public static int[] matrixLis(int[] a){ //O(n2 + nlogn)
         int size = a.length;
-        int mat[][] = new int[size][size];
+        int[][] mat = new int[size][size];
         mat[0][0] = a[0];
         int currentLength = 0;
         for (int i = 1; i < size; i++) {
