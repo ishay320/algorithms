@@ -5,6 +5,12 @@ import dataStruct.Node;
 public class cycleAlgo<T>{
     private Node<T> root;
 
+    /**
+     *
+     *
+     */
+
+
     public cycleAlgo(Node<T> root){
         this.root = root;
     }
