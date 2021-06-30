@@ -1,9 +1,11 @@
-package FloydWarshall;
+package algo2.FloydWarshall;
 
 public class FloydWarshall{
-    public static void main(String[] args){
 
-    }
+    /**
+     * @param friendMat
+     * @return
+     */
      public static boolean[][] FWBasic(boolean[][] friendMat){ // O(n^3)
          int size = friendMat.length;
          boolean[][] mat = new boolean[size][size];
@@ -22,6 +24,10 @@ public class FloydWarshall{
          return mat;
     }
 
+    /**
+     * @param friendMat
+     * @return
+     */
     public static int[][] FWPath(int[][] friendMat){
         int size = friendMat.length;
         int[][] mat = new int[size][size];
@@ -44,7 +50,5 @@ public class FloydWarshall{
         }
         return mat;
     }
-
-
 
 }

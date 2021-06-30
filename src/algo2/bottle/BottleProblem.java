@@ -1,4 +1,4 @@
-package bottle;
+package algo2.bottle;
 
 public class BottleProblem{
     // (1,2)

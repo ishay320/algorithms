@@ -1,4 +1,4 @@
-package lcs;
+package algo1.lcs;
 
 public class lcs{
     public static int dynamicLcsLen(String a,String b){

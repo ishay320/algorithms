@@ -1,3 +1,4 @@
+package toCheck;
 
 public class lcs{
     int[][] matrix;
@@ -7,7 +8,7 @@ public class lcs{
     /**
      * @param a
      * @param b
-     * @return lcs in greedy algo - (O)n*m
+     * @return algo1.toCheck.lcs in greedy algo - (O)n*m
      */
     public String greedy(String a, String b){
         String out = "";
@@ -27,7 +28,7 @@ public class lcs{
     /**
      * @param a
      * @param b
-     * @return lcs in greedy+ algo - (O)n+m +n
+     * @return algo1.toCheck.lcs in greedy+ algo - (O)n+m +n
      */
     public String greedyPlus(String a, String b){
         int algo[] = new int[26]; //as 26 chars in the abc

@@ -1,4 +1,4 @@
-package Max_SubArray;
+package algo2.Max_SubArray;
 
 import java.util.Arrays;
 
@@ -11,17 +11,18 @@ public class Max_Subarray{
         System.out.println(Arrays.deepToString(mat));
     }
 
-public static int[][] max_sub_matrix(int[] array){
-    int[][] mat = new int[array.length][array.length];
+    public static int[][] max_sub_matrix(int[] array){
+        int[][] mat = new int[array.length][array.length];
 
-    for (int i = 0; i < array.length; i++) {
-        mat[i][i] = array[i];
-        for (int j = i+1; j < array.length; j++) {
-            mat[i][j] = array[j]+mat[i][j-1];
+        for (int i = 0; i < array.length; i++) {
+            mat[i][i] = array[i];
+            for (int j = i+1; j < array.length; j++) {
+                mat[i][j] = array[j]+mat[i][j-1];
+            }
         }
+        return mat;
     }
-    return mat;
-}
+
     public static int[] best_subarray(int[] array){
         int best = Integer.MIN_VALUE;
         int start = 0;
@@ -43,7 +44,4 @@ public static int[][] max_sub_matrix(int[] array){
         }
         return Arrays.copyOfRange(array,start,end);
     }
-
-
-
 }

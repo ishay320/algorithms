@@ -1,4 +1,4 @@
-package CycleDetection;
+package algo1.CycleDetection;
 
 import dataStruct.Node;
 

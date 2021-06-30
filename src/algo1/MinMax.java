@@ -1,3 +1,5 @@
+package algo1;
+
 /**
  * this is MIN and MAX algorithms class
  */

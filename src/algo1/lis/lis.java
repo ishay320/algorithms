@@ -1,4 +1,4 @@
-package lis;
+package algo1.lis;
 
 public class lis{
     public static int lengthLis(int a[]){ //O(nlogn)

@@ -1,4 +1,4 @@
-package eggDrop;
+package algo1.eggDrop;
 
 public class eggDrop{
 

@@ -1,5 +1,5 @@
-import CycleDetection.cycleAlgo;
-import CycleDetection.makeRandomCycle;
+import algo1.CycleDetection.cycleAlgo;
+import algo1.CycleDetection.makeRandomCycle;
 import org.junit.jupiter.api.Test;
 
 public class cycle{
