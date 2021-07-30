@@ -1,0 +1,18 @@
+
+ // O(n^3)
+FW(matrix mat):
+    n = mat.length
+    m = mat[0].length
+    distance = new mat[n][m]
+    for i to n:
+        for j to m:
+            if(mat[i][j] == 0 && i!=j):
+                distance[i][j] = infinity
+            else:
+                distance[i][j] = mat[i][j]
+    for k in mat:
+        for i to n:
+            for j to m:
+                if(distance[i][k]+distance[k][j]<distance[i][j]):
+                    distance[i][j] = distance[i][k]+distance[k][j]
+    return distance

@@ -1,0 +1,9 @@
+
+O(3n)
+cycle_best(array arr)
+sum = arr.sum //O(n)
+(best,start,end) = best(arr) // o(n)
+(bestR,startR,endR) = best(-arr) // o(n)
+if(best<sum+bestR)
+    return(sum+bestR,endR,startR)
+return(best,start,end)

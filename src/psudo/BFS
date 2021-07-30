@@ -1,0 +1,27 @@
+
+
+BFS(G(V,E),start)
+queue = new Queue
+color[|V|]
+distance[|V|]
+parent[|V|]
+for i to |V|:
+    color[i] = white
+    distance[i] = infinity
+    parent[i] = null
+queue.add(start)
+while queue is not empty:
+    v = queue.dequeue()
+    for neighbor in G(v).neighbor():
+        if(color[neighbor] == white):
+            color[neighbor] = gray
+            distance[neighbor] = distance[v]+1
+            parent[neighbor] = v
+            queue.add(neighbor)
+    color[v] = black
+return distance,parent
+
+
+
+
+

@@ -1,0 +1,26 @@
+
+O(|V|log|V|)+O(|E|log|V|) = O((|V|+|E|)log|V|)
+dijkstra(G(E,V),start)
+queue = PriorityQueue
+was = array[|V|]
+previous = array[|V|]
+distance = array[|V|]
+for i to |V|: //init
+    was[i] = false
+    distance[i] = infinity
+    previous[i] = null
+queue.add(start,0)
+
+while(!queue.empty())O(|V|)
+    v = queue.popPriority()
+    was[v] = true
+    for neighbor in G(v): o(|E|)
+        if(!was[neighbor] && distance[neighbor]>distance[v]+G.getEdge(v,neighbor).distance())
+            distance[neighbor] = distance[v]+G.getEdge(v,neighbor).distance()
+            previous[neighbor] = v
+            if(queue.have(neighbor)) // O(log(n))
+                queue.rePriority(neighbor,distance[neighbor])
+            else
+                queue.add(neighbor,distance[neighbor])
+return distance, previous
+

@@ -1,0 +1,20 @@
+// O(n)
+
+best(array arr)
+sum = 0
+tempStart = 0
+best = 0
+start = 0 
+end = 0
+for i to arr.length
+    sum+=arr[i]
+    if(sum<0)
+        sum=0
+        tempStart = i+1
+    else 
+        if (sum>best)
+            best = sum
+            start = tempStart
+            end = i
+return (best,start,end)
+
