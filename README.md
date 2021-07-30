@@ -1,5 +1,7 @@
+<div dir='rtl' lang='he'> 
+
 # algorithms
-algorithms class
+סיכום של קורס אלגוריתמים 1 ו-2
 # WIP - psudo:
 * [Floyd Warshel](#Floyd-Warshel)
 * [best](#Best)
