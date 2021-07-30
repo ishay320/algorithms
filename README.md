@@ -1,9 +1,11 @@
 <div dir='rtl' lang='he'> 
 
 # algorithms
-סיכום של קורס אלגוריתמים 1 ו-2
+סיכום של קורס אלגוריתמים 1 ו-2 2021
+
+
 # WIP - psudo:
-* [Floyd Warshel](#Floyd-Warshel)
+* [Floyd Warshel - פלויד וורשל](#Floyd-Warshel)
 * [best](#Best)
 * [cycle best](#Cycle-Best)
 * [super best for matrix](#Super-Best-for-matrix)
