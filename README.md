@@ -78,6 +78,7 @@ best (Array array):
 סיבוכיות: `O(n)`
 מחזיר סכום, התחלה וסוף אבל של מעגל(כלומר יכול להיות start>end)   
 </div>
+
 ```python
 cycle_best(Array array):
    array_r = -array # doing minus to all the array O(N)
