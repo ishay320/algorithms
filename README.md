@@ -1,2 +1,2 @@
-# algorithms-
+# algorithms
 algorithms class
