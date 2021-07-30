@@ -8,6 +8,7 @@ public class Fire{
 
     /**need tests
      * O(|V|)
+     * burning tree to find root or layer number
      * @param arr
      * @return radios
      */

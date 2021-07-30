@@ -89,7 +89,7 @@ public class Max_Subarray{
                     }else
                         if (algo_sum>best){
                         best = algo_sum;
-                        start_line = i;
+                        start_line = i; // check if i+1
                         end_line = j;
                         start_column = algo_start;
                         end_column = k;
