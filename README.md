@@ -1,17 +1,19 @@
+<div dir='rtl' lang='he'> 
+
 # algorithms
-algorithms class
+סיכום של קורס אלגוריתמים 1 ו-2
 # WIP - psudo:
-* [Floyd Warshel](##Floyd-Warshel)
-* [best](##Best)
-* [cycle best](##Cycle-Best)
-* [super best for matrix](##Super-Best-for-matrix)
+* [Floyd Warshel](#Floyd-Warshel)
+* [best](#Best)
+* [cycle best](#Cycle-Best)
+* [super best for matrix](#Super-Best-for-matrix)
 * Graphs:
-    * [dijkstra](##dijkstra)
-    * [BFS](##BFS)
+    * [dijkstra](#dijkstra)
+    * [BFS](#BFS)
     * DFS ---  O(|V|+|E|)
     
 * [Trees:](#Trees:) 
-    * [euiler](##euler)
+    * [euiler](#euler)
     * prime ---
     * krokshnitz --- 
 
