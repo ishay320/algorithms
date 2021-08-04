@@ -1,32 +1,41 @@
 <div dir='rtl' lang='he'> 
 
-# קורס אלגוריתמים 
-סיכום של קורס אלגוריתמים 1 ו-2
+# קורס אלגוריתמים
+סיכום של קורס אלגוריתמים 1 ו-2 2021
+
+
 # WIP - psudo:
 * ## [תוכן עניינים](#****)
-* [Floyd Warshel - פלויד וורשל](#Floyd-Warshel)
-* [תת מערך עם סכום מקסימאלי](#)
-  * [best](#Best)
-  * [cycle best - מעגלי](#Cycle-Best)
-* [תת מטריצה עם סכום תאים מקסימאלי](#Super-Best-for-matrix)
-* [גרפים:](#)
-    * [dijkstra](#dijkstra)
-    * [BFS](#BFS)
-    * [DFS](#) ---  O(|V|+|E|)
   
+* [Floyd Warshel - פלויד וורשל](#Floyd-Warshel)
+  
+* [תת מערך עם סכום מקסימאלי](#)
+  * [best-מציאת תת הטור הגדול ביותר](#Best)
+  * [cycle best-מציאת תת הטור הגדול ביותר רק במעגל](#Cycle-Best)
+* [תת מטריצה עם סכום תאים מקסימאלי](#Super-Best-for-matrix)
+  
+* [גרפים:](#)
+  * [dijkstra](#dijkstra)
+  * [BFS](#BFS)
+  * [DFS](#) ---  O(|V|+|E|)
+
 * [עץ פורש מינימאלי](#)
   * prime ---
   * krokshnitz ---
-  
-* [עצים:](#Trees:) 
-    * [euiler](#euler)
-    * [שריפת עלים]()
+
+* [עצים:](#Trees:)
+  * [euiler](#euler)
+  * [שריפת עלים]()
 * [קוד האופמן]()
 
+</div>
+
+<div dir='rtl' lang='he'> 
+   
 ## Floyd Warshel
 קוד שבודק האם קיים מסלול בין קודקוד כלשהו לקודקוד אחר וגם מרחק הקצר ביותר.
 ### דרך עבודה
-עובר על מטריצת שכנויות וכל פעם בודק אם יכול לעבור דרך קודקוד אחר.
+האלגוריתם עובר ובודק האם בין שני נקודות קיים דרך קצרה יותר דרך נקודה נוספת K.
 ### סיבוכיות
 `O(n^3)` <br>
 בודק מעבר דרך קודקוד `O(n)` ובכל מעבר עובר על מטריצה `O(n^2)`<br>
@@ -35,63 +44,67 @@
 מקבל מטריצת שכנויות<br>
 מחזיר מטריצת שכנויות עם המרחקים
 ### פסודו 
+</div>
+
 ```python
-FW(matrix mat):
+Floyd_Warshel(matrix mat):
     n = mat.length
     m = mat[0].length
     distance = new mat[n][m] 
-    for i to n:
+    for i to n: #אתחול של המטריצה
         for j to m:
             if(mat[i][j] == 0 && i!=j):
                 distance[i][j] = infinity
             else:
                 distance[i][j] = mat[i][j]
-    for k in mat:
+    for k in mat: // ?
         for i to n:
             for j to m:
                 if(distance[i][k]+distance[k][j]<distance[i][j]):
                     distance[i][j] = distance[i][k]+distance[k][j]
     return distance
 ```
+<div dir='rtl' lang='he'> 
 
 ## Best
-`O(n)` return best,start,end
+סיבוכיות: `O(n)` 
+מחזיר את הסכום, את ההתחלה ואת הסוף      
+ </div>
+ 
 ```python
-(int,int,int) best (array){
-        start =0;
-        best = 0;
-        sum = 0;
-        end = 0;
-        temp_start =0;
-        for (i in array) {
-            sum+=array[i];
-            if (sum<0){
-                sum =0;
-                start = i+1;
-            }
-            if(best<sum){
-                best = sum;
-                start = temp_start;
-                end = i;
-            }
-        }
-        return (best,start,end);
-    }
+best (Array array):
+   start = 0
+   best = 0
+   sum = 0
+   end = 0
+   temp_start = 0
+   for (i in array):
+      sum += array[i]
+   if (sum<0):
+      sum = 0
+      start = i+1
+   if(best<sum):
+      best = sum
+      start = temp_start
+      end = i
+   return (best,start,end)
 ```
+<div dir='rtl' lang='he'> 
 
 ## Cycle Best
-`O(n)` return best,start,end but of cycle
-```python
- cycle_best(array){
-        array_r = -array;
+סיבוכיות: `O(n)`
+מחזיר סכום, התחלה וסוף אבל של מעגל(כלומר יכול להיות start>end)   
+</div>
 
-        if(best(array)[0] <array.sum()-(-best(array_r)[0])){
-            best =array.sum()-(-best(array_r)[1]);
-            start = best(array_r)[0];
-            return (start,best);
-        }
-       return best(array)  ;
-    }
+```python
+cycle_best(Array array):
+   array_r = -array # doing minus to all the array O(N)
+   (r_best,r_start,r_end) = best(array_r)[best]
+   (best,start,end) = best(array)
+   if(best <array.sum()-(-r_best)):
+      cycle_best =array.sum()-(-r_best) 
+      return (cycle_best,r_end,r_start)
+   return best(best,start,end)
 ```
 
 ## Super Best for matrix
