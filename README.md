@@ -1,24 +1,40 @@
 <div dir='rtl' lang='he'> 
 
-# algorithms
+# קורס אלגוריתמים 
 סיכום של קורס אלגוריתמים 1 ו-2
 # WIP - psudo:
-* [Floyd Warshel](#Floyd-Warshel)
-* [best](#Best)
-* [cycle best](#Cycle-Best)
-* [super best for matrix](#Super-Best-for-matrix)
-* Graphs:
+* ## [תוכן עניינים](#****)
+* [Floyd Warshel - פלויד וורשל](#Floyd-Warshel)
+* [תת מערך עם סכום מקסימאלי](#)
+  * [best](#Best)
+  * [cycle best - מעגלי](#Cycle-Best)
+* [תת מטריצה עם סכום תאים מקסימאלי](#Super-Best-for-matrix)
+* [גרפים:](#)
     * [dijkstra](#dijkstra)
     * [BFS](#BFS)
-    * DFS ---  O(|V|+|E|)
-    
-* [Trees:](#Trees:) 
+    * [DFS](#) ---  O(|V|+|E|)
+  
+* [עץ פורש מינימאלי](#)
+  * prime ---
+  * krokshnitz ---
+  
+* [עצים:](#Trees:) 
     * [euiler](#euler)
-    * prime ---
-    * krokshnitz --- 
+    * [שריפת עלים]()
+* [קוד האופמן]()
 
 ## Floyd Warshel
-`O(n^3)` return matrix with all the distances
+קוד שבודק האם קיים מסלול בין קודקוד כלשהו לקודקוד אחר וגם מרחק הקצר ביותר.
+### דרך עבודה
+עובר על מטריצת שכנויות וכל פעם בודק אם יכול לעבור דרך קודקוד אחר.
+### סיבוכיות
+`O(n^3)` <br>
+בודק מעבר דרך קודקוד `O(n)` ובכל מעבר עובר על מטריצה `O(n^2)`<br>
+`O(n)*O(n^2) = O(n^3)`<br>
+### IO
+מקבל מטריצת שכנויות<br>
+מחזיר מטריצת שכנויות עם המרחקים
+### פסודו 
 ```python
 FW(matrix mat):
     n = mat.length
