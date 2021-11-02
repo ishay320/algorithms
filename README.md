@@ -3,34 +3,35 @@
 # קורס אלגוריתמים
 סיכום של קורס אלגוריתמים 1 ו-2 2021
 
-
 # WIP - psudo:
-* ## [תוכן עניינים](#****)
+* ## [תוכן עניינים](#****)  <!-- [ ] -->
   
-* [Floyd Warshel - פלויד וורשל](#Floyd-Warshel)
-  
-* [תת מערך עם סכום מקסימאלי](#)
-  * [best-מציאת תת הטור הגדול ביותר](#Best)
-  * [cycle best-מציאת תת הטור הגדול ביותר רק במעגל](#Cycle-Best)
-* [תת מטריצה עם סכום תאים מקסימאלי](#Super-Best-for-matrix)
-  
-* [גרפים:](#)
-  * [dijkstra](#dijkstra)
-  * [BFS](#BFS)
-  * [DFS](#DFS)
-  * [מציאת מספר רכיבי קשירות בגרף]()
-* [עץ פורש מינימאלי](#)
-  * [פריים]()
-  * [קרוסקל]()
-  * [קרוסקל הפוך]()
-  * [בורבוקה]()
-  
-* [עצים:](#Trees:)
-  * [euiler](#euler)
-  * [שריפת עלים]()
-* [קוד האופמן](#קוד-האפמן)
-* [איזומורפיזם של עצים]()
-* [בניית עץ מרשימת דרגות]()
+* [Floyd Warshel - פלויד וורשל](#Floyd-Warshel) <!-- [x] -->
+
+* [תת מערך עם סכום מקסימאלי](#תת-מערך-עם-סכום-מקסימאלי) <!-- [x] -->
+  * [best-מציאת תת הטור הגדול ביותר](#Best) <!-- [x] -->
+  * [cycle best-מציאת תת הטור הגדול ביותר רק במעגל](#Cycle-Best)    <!-- [x] -->
+* [תת מטריצה עם סכום תאים מקסימאלי](#Super-Best-for-matrix) <!-- [x] -->
+
+* [גרפים:](#גרפים)   <!-- [ ] -->
+  * [dijkstra](#dijkstra)   <!-- [v] - need to go over the code -->
+  * [BFS](#BFS) <!-- [v] -->
+  * [DFS](#DFS) <!-- [ ] -->
+  * [מציאת מספר רכיבי קשירות בגרף](#מציאת-מספר-רכיבי-קשירות-בגרף)    <!-- [ ] -->
+
+* [עצים:](#Trees:)  <!-- [ ] -->
+  * [euiler](#euler)    <!-- [ ] -->
+  * [שריפת עלים](#שריפת-עלים)  <!-- [ ] -->
+
+* [עץ פורש מינימאלי](#עץ-פורש-מינימאלי) <!-- [ ] -->
+  * [פריים](#פריים)   <!-- [ ] -->
+  * [קרוסקל](#קרוסקל)  <!-- [ ] -->
+  * [קרוסקל הפוך](#קרוסקל-הפוך) <!-- [ ] -->
+  * [בורבוקה](#בורבוקה) <!-- [ ] -->
+
+* [איזומורפיזם של עצים](#איזומורפיזם-של-עצים)   <!-- [ ] -->
+* [בניית עץ מרשימת דרגות](#בניית-עץ-מרשימת-דרגות) <!-- [ ] -->
+* [קוד האופמן](#קוד-האפמן)  <!-- [x] -->
 
 </div>
 
@@ -38,7 +39,7 @@
    
 ## Floyd Warshel
 ### תיאור
-קוד שבודק האם קיים מסלול בין קודקוד כלשהו לקודקוד אחר וגם מרחק הקצר ביותר.
+קוד שבודק האם קיים מסלול בין קודקוד כלשהו לקודקוד אחר וגם מרחק הקצר ביותר בתוך מטריצת שכנויות.
 ### דרך עבודה
 האלגוריתם עובר ובודק האם בין שני נקודות קיים דרך קצרה יותר דרך נקודה נוספת K.
 ### סיבוכיות
@@ -69,7 +70,10 @@ Floyd_Warshel(matrix mat):
                     distance[i][j] = distance[i][k]+distance[k][j]
     return distance
 ```
+
 <div dir='rtl' lang='he'> 
+
+# תת מערך עם סכום מקסימאלי
 
 ## Best
 ### תיאור
@@ -80,7 +84,7 @@ Floyd_Warshel(matrix mat):
 * `O(n)` <br>
 ### io
 מקבל מערך<br>
-מחזיר את הסכום, את ההתחלה ואת הסוף
+מחזיר את הסכום, את ההתחלה ואת הסוף.
 ### פסודו
 </div>
  
@@ -103,6 +107,7 @@ best (Array array):
         end = i
    return (best,start,end)
 ```
+
 <div dir='rtl' lang='he'> 
 
 ## Cycle Best
@@ -129,6 +134,7 @@ cycle_best(Array array):
       return (cycle_best,r_end,r_start)
    return best(best,start,end)
 ```
+
 <div dir='rtl' lang='he'> 
 
 ## Super Best for matrix
@@ -163,6 +169,49 @@ Super-Best(matrix mat[rows,cols]) :
                 end_y = j
     return (maxSum, start_x, start_y, end_x, end_y)
 ```
+
+<div dir='rtl' lang='he'> 
+
+# גרפים
+
+## dijkstra 
+### תיאור
+
+### דרך עבודה
+
+### סיבוכיות
+* `O(|V|log|V|)+O(|E|log|V|) = O((|V|+|E|)log|V|)` <br>
+### io
+`return distance, previous`
+### פסודו
+</div>
+
+```python
+dijkstra(G(E,V),startPoint):
+    queue = PriorityQueue
+    was = array[|V|]
+    previous = array[|V|]
+    distance = array[|V|]
+    for i to |V|: //init
+        was[i] = false
+        distance[i] = infinity
+        previous[i] = null
+    queue.add(startPoint,0)
+
+    while(!queue.empty())O(|V|)
+        v = queue.popPriority()
+        was[v] = true
+        for neighbor in G(v): o(|E|)
+            if(!was[neighbor] && distance[neighbor]>distance[v]+G.getEdge(v,neighbor).distance())
+                distance[neighbor] = distance[v]+G.getEdge(v,neighbor).distance()
+                previous[neighbor] = v
+                if(queue.have(neighbor)) // O(log(n))
+                    queue.rePriority(neighbor,distance[neighbor])
+                else
+                    queue.add(neighbor,distance[neighbor])
+    return distance, previous
+```
+
 <div dir='rtl' lang='he'> 
 
 ## BFS
@@ -171,34 +220,36 @@ Super-Best(matrix mat[rows,cols]) :
 ### דרך עבודה
 
 ### סיבוכיות
-* `O(|V|+|E|)` <br>
+* `O(|V|+|E|)` 
 ### io
-
+- מקבל גרף ונקודת התחלה
+- מחזיר מערכי מרחק והורים
 ### פסודו
 </div>
 
 ```python
-BFS(G(V,E),start)
-queue = new Queue
-color[|V|]
-distance[|V|]
-parent[|V|]
-for i to |V|:
-    color[i] = white
-    distance[i] = infinity
-    parent[i] = null
-queue.add(start)
-while queue is not empty:
-    v = queue.dequeue()
-    for neighbor in G(v).neighbor():
-        if(color[neighbor] == white):
-            color[neighbor] = gray
-            distance[neighbor] = distance[v]+1
-            parent[neighbor] = v
-            queue.add(neighbor)
-    color[v] = black
-return distance,parent
+BFS(G(V,E),start):
+    queue = new Queue
+    color[|V|]
+    distance[|V|]
+    parent[|V|]
+    for i to |V|:
+        color[i] = white
+        distance[i] = infinity
+        parent[i] = null
+    queue.add(start)
+    while queue is not empty:
+        v = queue.dequeue()
+        for neighbor in G(v).neighbor():
+            if(color[neighbor] == white):
+                color[neighbor] = gray
+                distance[neighbor] = distance[v]+1
+                parent[neighbor] = v
+                queue.add(neighbor)
+        color[v] = black
+    return distance,parent
 ```
+
 <div dir='rtl' lang='he'> 
 
 ## DFS
@@ -207,7 +258,7 @@ return distance,parent
 ### דרך עבודה
 
 ### סיבוכיות
-* `O(|V|+|E|)` <br>
+* `O(|V|+|E|)`
 ### io
 
 ### פסודו
@@ -215,46 +266,24 @@ return distance,parent
 
 ```python
 ```
+
 <div dir='rtl' lang='he'> 
 
-## dijkstra 
+## מציאת מספר רכיבי קשירות בגרף
 ### תיאור
 
 ### דרך עבודה
 
 ### סיבוכיות
-* `O((|V|+|E|)log|V|)` <br>
+* 
 ### io
-`return distance, previous`
+
 ### פסודו
 </div>
 
 ```python
-O(|V|log|V|)+O(|E|log|V|) = O((|V|+|E|)log|V|)
-dijkstra(G(E,V),start)
-queue = PriorityQueue
-was = array[|V|]
-previous = array[|V|]
-distance = array[|V|]
-for i to |V|: //init
-    was[i] = false
-    distance[i] = infinity
-    previous[i] = null
-queue.add(start,0)
-
-while(!queue.empty())O(|V|)
-    v = queue.popPriority()
-    was[v] = true
-    for neighbor in G(v): o(|E|)
-        if(!was[neighbor] && distance[neighbor]>distance[v]+G.getEdge(v,neighbor).distance())
-            distance[neighbor] = distance[v]+G.getEdge(v,neighbor).distance()
-            previous[neighbor] = v
-            if(queue.have(neighbor)) // O(log(n))
-                queue.rePriority(neighbor,distance[neighbor])
-            else
-                queue.add(neighbor,distance[neighbor])
-return distance, previous
 ```
+
 <div dir='rtl' lang='he'> 
 
 # Trees:
@@ -289,11 +318,136 @@ return distance, previous
         return done.toArray();
     }
 ```
+
+<div dir='rtl' lang='he'> 
+
+## שריפת עלים
+### תיאור
+
+### דרך עבודה
+
+### סיבוכיות
+* 
+### io
+
+### פסודו
+</div>
+
+```python
+```
+
+<div dir='rtl' lang='he'> 
+
+# עץ פורס מינימאלי
+## פריים
+### תיאור
+
+### דרך עבודה
+
+### סיבוכיות
+* 
+### io
+
+### פסודו
+</div>
+
+```python
+```
+
+<div dir='rtl' lang='he'> 
+
+## קרוסקל
+### תיאור
+
+### דרך עבודה
+
+### סיבוכיות
+* 
+### io
+
+### פסודו
+</div>
+
+```python
+```
+
+<div dir='rtl' lang='he'> 
+
+## קרוסקל הפוך
+### תיאור
+
+### דרך עבודה
+
+### סיבוכיות
+* 
+### io
+
+### פסודו
+</div>
+
+```python
+```
+
+<div dir='rtl' lang='he'> 
+
+## בורבוקה
+### תיאור
+
+### דרך עבודה
+
+### סיבוכיות
+* 
+### io
+
+### פסודו
+</div>
+
+```python
+```
+
+<div dir='rtl' lang='he'> 
+
+## איזומורפיזם של עצים
+### תיאור
+
+### דרך עבודה
+
+### סיבוכיות
+* 
+### io
+
+### פסודו
+</div>
+
+```python
+```
+
+<div dir='rtl' lang='he'> 
+
+## בניית עץ מרשימת דרגות
+### תיאור
+
+### דרך עבודה
+
+### סיבוכיות
+* 
+### io
+
+### פסודו
+</div>
+
+```python
+```
+
+
 <div dir='rtl' lang='he'> 
 
 ## קוד האפמן
 ### תיאור
-
+האפמן בא לפתור את זה ששימוש באותיות לפעמים תופס הרבה מקום,  
+אז מה שעושה זה לקחת את האותיות שמופיעות הכי הרבה פעמים,  
+ובטבלאת האותיות שלו הוא יקבע שהן יהיו כמה שיותר קטנים.  
+וכך חוסך מקום בקבצי טקסט.
 ### דרך עבודה
 שלב ראשון בניית העץ
 שלב שני הוצאת הייצוגים הבינאריים של כל תו מהעץ
@@ -302,12 +456,13 @@ return distance, previous
 כאשר המערך ממוין על פי שכיחויות:
 * `O(n)` <br>
 ### io
-
+- מקבל מערך
+- מחזיר עץ או מדפיס את הייצוג
 ### פסודו
 </div>
 
 ```python
-Huffman(C): # O(n*log(n))
+Huffman(C): # O(n*log(n)) making the tree
     Q = C
     while |Q| > 1 :
         New node z
@@ -316,7 +471,7 @@ Huffman(C): # O(n*log(n))
         z.freq = x.freq + y.freq
         Q.insert(z)
     
-Huffman-process(root = Huffman(C)): # O(n)
+Huffman-process(root = Huffman(C)): # O(n) printing
     if(root.left == null AND root.right == null) :
         print(root.char)
     else:
