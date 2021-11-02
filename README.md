@@ -286,7 +286,7 @@ BFS(G(V,E),start):
 
 <div dir='rtl' lang='he'> 
 
-# Trees:
+# Trees
 
 ## euler
 ### תיאור
