@@ -579,17 +579,33 @@ findCode(u)
 
 ## בניית עץ מרשימת דרגות
 ### תיאור
-
+צריך לבדוק קודם שאכן מתקיים Sum(degs) = 2*(|V|-1) לפני שמתחילים את האלגוריתם
+הערה: האינדקס של האיבר הראשון במערך הוא 0, האינדקס של האיבר האחרון במערך הוא N-1.
 ### דרך עבודה
 
 ### סיבוכיות
-* 
+*  `O(VlogV)` אם המערך לא ממוין. `O(V)` אם המערך ממוין כבר.
 ### io
 
 ### פסודו
 </div>
 
 ```python
+GenerateTreebyDegrees(deg[N]) :
+    sort(deg)
+
+    j = 0
+    while deg[j] = 1 : j++
+    
+    New Tree[N,N] = {false}
+    for i=0 to N-2 :
+        Tree[i,j] = true
+        Tree[j,i] = true
+        if --deg[j] = 1 :
+            j++
+    Tree[N-2,N-1] = true
+    Tree[N-1,N-2] = true
+    return Tree
 ```
 
 
