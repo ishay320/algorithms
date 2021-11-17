@@ -287,15 +287,23 @@ DFS-VISIT(G, n) :
 ### תיאור
 
 ### דרך עבודה
-
+משתמש ב `DFS`
 ### סיבוכיות
-* 
+* `O(|V|+|E|)`
 ### io
 
 ### פסודו
 </div>
 
 ```python
+DFS-Number-Of-Connected-Components(G) :
+    counter = 0
+    for each v in V : v.color = WHITE
+    for each v in V :
+        if v.color = WHITE :
+            counter++
+            DFS-VISIT(G, v)
+    return counter
 ```
 
 <div dir='rtl' lang='he'> 
