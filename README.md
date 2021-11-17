@@ -39,7 +39,7 @@
    
 ## Floyd Warshel
 ### תיאור
-קוד שבודק האם קיים מסלול בין קודקוד כלשהו לקודקוד אחר וגם מרחק הקצר ביותר בתוך מטריצת שכנויות.
+בגרף לא משוקלל, הקוד בודק אם קיים מסלול בין קודקוד למשנהו וגם מרחק הקצר ביותר כל זה מחושב במטריצת שכנויות.
 ### דרך עבודה
 האלגוריתם עובר ובודק האם בין שני נקודות קיים דרך קצרה יותר דרך נקודה נוספת K.
 ### סיבוכיות
@@ -216,9 +216,10 @@ dijkstra(G(E,V),startPoint):
 
 ## BFS
 ### תיאור
+מעבר על גרף באמצעות סריקה לרוחב
 
 ### דרך עבודה
-
+ממלא תור שזה אומר שהוא עובר תמיד על מה שנכנס ראשון שזה הקרוב ואחר כך עובר לרחוקים יותר.
 ### סיבוכיות
 * `O(|V|+|E|)` 
 ### io
@@ -254,7 +255,8 @@ BFS(G(V,E),start):
 
 ## DFS
 ### תיאור
-
+מעבר על גרף באמצעות סריקה לעומק
+  
 ### דרך עבודה
 
 ### סיבוכיות
@@ -265,6 +267,18 @@ BFS(G(V,E),start):
 </div>
 
 ```python
+DFS(G) :
+    for each v in V : v.color = WHITE
+    for each v in V :
+        if v.color = WHITE :
+            DFS-VISIT(G, v)
+
+DFS-VISIT(G, n) :
+    n.color = GRAY
+    for each v in adj[n] :
+        if v.color = WHITE :
+            DFS-VISIT(G, v)
+    n.color = BLACK
 ```
 
 <div dir='rtl' lang='he'> 
@@ -290,11 +304,11 @@ BFS(G(V,E),start):
 
 ## euler
 ### תיאור
-
+מציאת מעגל אויילר בגרף
 ### דרך עבודה
 
 ### סיבוכיות
-* `O()` <br>
+* `O(|V|+|E|)` <br>
 ### io
 
 ### פסודו
@@ -317,26 +331,66 @@ BFS(G(V,E),start):
         }
         return done.toArray();
     }
+    
+   ## or
+    
+    Euler-Cycle(G) :
+    select some vertex s from G 
+    list C = ∅
+    stack = {s}
+    while stack ≠ ∅ :
+        v = stack.peek()
+        if v.degree = 0 :
+            C.add(stack.pop())
+        else :
+            u = first of adj[v]
+            stack.push(u)
+            G.remove(u,v)
+            G.remove(v,u)
+    return C        
 ```
 
 <div dir='rtl' lang='he'> 
 
 ## שריפת עלים
 ### תיאור
-
+מציאת קוטר, רדיוס ומרכזים של עץ ע"י אלגוריתם שריפת עלים
+  
 ### דרך עבודה
 
 ### סיבוכיות
-* 
+* `O(|V|+|E|)`
 ### io
 
 ### פסודו
 </div>
 
 ```python
+Diameter-Fire(T) :
+    n = |V|, radius = 0, leaves = ∅
+    for each v in V :
+        if v.deg = 1 :
+            leaves.add(v)
+    
+    while n > 2 :
+        future = ∅
+        for each leaf in leaves :
+            leaf.deg = 0
+            n--
+            for each v in adj[leaf] :
+                if --v.deg = 1 :
+                    future.add(v)
+        radius++
+        leaves = future
+
+    diameter = radius*2 + |leaves|-1
+    centers[] = leaves
+    return {centers, radius, diameter}
 ```
 
 <div dir='rtl' lang='he'> 
+  
+<!-- TODO: redo the psudo for pyton psudo and check all -->
 
 # עץ פורס מינימאלי
 ## פריים
@@ -345,50 +399,92 @@ BFS(G(V,E),start):
 ### דרך עבודה
 
 ### סיבוכיות
-* 
+* `O(|V|+|E|log|V|)`
 ### io
-
+מקבל גרף ומחזיר עץ
 ### פסודו
 </div>
 
 ```python
+MST-Prim(G) :
+    T = ∅
+    for each v in V :
+        v.key = ∞
+        v.prev = null
+    V[0].key = 0
+    Q = V
+    while Q ≠ ∅ :
+        u = Q.extractMin()
+        if u.prev ≠ null :
+            T.add((u, u.prev))
+        for each v in adj[u] :
+            if v in Q AND v.key > w(u,v) :
+                v.key = w(u,v)
+                v.prev = u
+    return T
 ```
 
 <div dir='rtl' lang='he'> 
+  
+<!-- TODO: redo the psudo for pyton psudo and check all -->
 
 ## קרוסקל
 ### תיאור
-
+יצירת עץ פורס מינימאלי
 ### דרך עבודה
 
 ### סיבוכיות
-* 
+* `O(|E|log|E|)`
 ### io
-
+מקבל גרף ומחזיר עץ
 ### פסודו
 </div>
 
 ```python
+MST-Kruskal(G:graph,V:vertices) :
+    T = Tree()
+    for each v in V : 
+        makeSet(v)
+    sort E by weights
+    for each (u,v) in E :
+        if findSet(u) ≠ findSet(v) :
+            T.add((u,v))
+            union(u, v)
+    return T
 ```
 
 <div dir='rtl' lang='he'> 
+  
+<!-- TODO: redo the psudo for pyton psudo and check all -->
 
 ## קרוסקל הפוך
 ### תיאור
 
 ### דרך עבודה
-
+הרעיון הוא להתחיל עם "עץ" שיש בו את כל הצלעות של G. נעבור על הצלעות מהגדולות לקטנות ונשאל על כל צלע האם אפשר לנתק אותה מהגרף והוא עדיין יישאר קשיר. אם כן נמחק את הצלע מהעץ, ככה באותו האופן עד שנגיע לעץ בגודל תקין.
+  
 ### סיבוכיות
-* 
+* `O(|E|(|E|+|V|))`
 ### io
-
+מקבל גרף ומחזיר עץ
 ### פסודו
 </div>
 
 ```python
+MST-Reversed-Kruskal(G) :
+    T = E
+    Q = E
+    while |T| > |V|-1 :
+        e = Q.extractMax()
+        G.removeEdge(e)
+        if isConnected = false :
+            G.addEdge(e)
+    return T
 ```
 
 <div dir='rtl' lang='he'> 
+  
+<!-- TODO: redo the psudo for pyton psudo and check all -->
 
 ## בורבוקה
 ### תיאור
@@ -396,13 +492,33 @@ BFS(G(V,E),start):
 ### דרך עבודה
 
 ### סיבוכיות
-* 
+* `O(|E|log|V|)`
 ### io
+מקבל גרף ומחזיר עץ
 
 ### פסודו
 </div>
 
 ```python
+MST-Boruvka(G) :
+    T = ∅
+    for each v in V : makeSet(v)
+
+    while |T| < |V|-1 :
+        New cheapest[|V|] := array of edges
+        for (u,v) in E :
+            g1 = findSet(u)
+            g2 = findSet(v)
+            if g1 ≠ g2 :
+                if w(cheapest[g1]) > w(u,v) :
+                    w(cheapest[g1]) = w(u,v)
+                if w(cheapest[g2]) > w(u,v) :
+                    w(cheapest[g2]) = w(u,v)
+        for i=0 to |v| :
+            if cheapest[i] ≠ null :
+                T.add(cheapest[i])
+                union(cheapest[i].u, cheapest[i].v)
+    return T
 ```
 
 <div dir='rtl' lang='he'> 
@@ -411,15 +527,44 @@ BFS(G(V,E),start):
 ### תיאור
 
 ### דרך עבודה
-
+הרעיון הוא ליצור ייצוג בינארי כמחרוזת לכל עץ. אם המחרוזת של העץ הראשון זהה למחרוזת של העץ השני, אזי שני העצים איזומורפיים.
+יצירת הייצוג הבינארי כמחרוזת לעץ מתחילה רקורסיבית מהשורש כלפי מטה, כאשר כל עלה מיוצג ע"י "01" וכל אבא משרשר את הייצוגים של הילדים שלו בסדר ממוין כאשר משמאל יש "0" ומימין יש "1".
+אם לא נתון מה השורש של העץ אז נשתמש באלגוריתם שריפה למציאת מרכז העץ והוא יהיה השורש.
+אם לעץ הראשון יש מרכז אחד ולשני יש שני מרכזים, אזי העצים לא איזומורפיים.
+אם יש 2 מרכזים לעץ, נבדוק אם המחרוזת של העץ הראשון שווה למחרוזת של העץ השני בחילופי תפקידים בין המרכזים שנמצאו.
 ### סיבוכיות
-* 
+* `O(VlogV)`
 ### io
 
 ### פסודו
 </div>
 
 ```python
+AHU-Tree-Isomorphism(T1, T2) :
+    r1 = T1.root
+    r2 = T2.root
+    if r1 = null AND r2 = null :
+        r1 = findCenter(T1)    // by Fire Algorithm
+        r2 = findCenter(T2)
+    New global List<String> childrenCodes[|V|]
+    code1 = findCode(r1)
+    code2 = findCode(r2)
+    return (code1 == code2)
+
+findCode(u)
+    u.color = BLACK
+    if u is a leaf :
+        return "10"
+
+    for each v in adj[u] :
+        if v.color = WHITE :    // then v is child of u
+            childrenCodes[u].add(findCode(v))
+    Sort(childrenCodes[u])
+    temp = ""
+    for each s in childrenCodes[u] :
+        temp += s
+    return "1"+temp+"0"
+
 ```
 
 <div dir='rtl' lang='he'> 
