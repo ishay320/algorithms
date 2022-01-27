@@ -217,7 +217,7 @@ dijkstra(G(E,V),startPoint):
 ## BFS
 ### תיאור
 מעבר על גרף באמצעות סריקה לרוחב
-
+כלומר אפשר לדמיין שעובר במעגלים שכל פעם גדלים
 ### דרך עבודה
 ממלא תור שזה אומר שהוא עובר תמיד על מה שנכנס ראשון שזה הקרוב ואחר כך עובר לרחוקים יותר.
 ### סיבוכיות
@@ -230,25 +230,28 @@ dijkstra(G(E,V),startPoint):
 
 ```python
 BFS(G(V,E),start):
-    queue = new Queue
-    color[|V|]
-    distance[|V|]
-    parent[|V|]
-    for i to |V|:
+    # init:
+    queue = new Queue # main queue
+    color[len(V)]
+    distance[len(V)]
+    parent[len(V)]
+    for i to len(V):
         color[i] = white
         distance[i] = infinity
         parent[i] = null
+
+    # Algorithm:
     queue.add(start)
     while queue is not empty:
-        v = queue.dequeue()
-        for neighbor in G(v).neighbor():
-            if(color[neighbor] == white):
+        vert = queue.dequeue()
+        for neighbor in G(vert).neighbor():
+            if(color[neighbor] == white): # if dident pass on him then add him to the queue
                 color[neighbor] = gray
-                distance[neighbor] = distance[v]+1
-                parent[neighbor] = v
+                distance[neighbor] = distance[vert] + 1
+                parent[neighbor] = vert
                 queue.add(neighbor)
-        color[v] = black
-    return distance,parent
+        color[vert] = black # passed on the verticy so color it black
+    return distance, arent
 ```
 
 <div dir='rtl' lang='he'> 
